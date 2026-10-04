@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>City Pharma — Wholesale Medicine</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f5f7;
+    color: #222;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: white;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #263c8f;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #e04b4b;
+}
+
+
+/* SEARCH */
+
+.search {
+    flex: 1;
+}
+
+.search input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 15px;
+}
+
+.search input:focus {
+    border-color: #263c8f;
+}
+
+
+/* ORDER BUTTON */
+
+.cart-btn {
+    background: #263c8f;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.cart-btn:hover {
+    background: #1c2f72;
+}
+
+
+/* =========================
+   COMPANY BAR
+========================= */
+
+nav {
+    background: #263c8f;
+}
+
+.nav-inner {
+    max-width: 1400px;
+    margin: auto;
+
+    display: flex;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    white-space: nowrap;
+
+    scrollbar-width: thin;
+}
+
+.nav-inner::-webkit-scrollbar {
+    height: 5px;
+}
+
+.nav-inner button {
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    padding: 13px 17px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    font-size: 14px;
+
+    flex: 0 0 auto;
+}
+
+.nav-inner button:hover {
+    background: rgba(255,255,255,.15);
+}
+
+.nav-inner button.active {
+    background: white;
+    color: #263c8f;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: white;
+
+    padding: 50px 20px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.hero-inner {
+    max-width: 1400px;
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #666;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.hero-buttons button {
+
+    border: none;
+
+    padding: 13px 20px;
+
+    margin-right: 8px;
+
+    cursor: pointer;
+
+    border-radius: 4px;
+
+    font-size: 14px;
+}
+
+.primary {
+    background: #263c8f;
+    color: white;
+}
+
+.secondary {
+    background: #e9ebf2;
+    color: #263c8f;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 35px 20px;
+}
+
+.section-title {
+
+    font-size: 23px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fill, minmax(240px, 1fr));
+
+    gap: 18px;
+}
+
+.product {
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    padding: 18px;
+
+    border-radius: 4px;
+
+    transition: .15s;
+}
+
+.product:hover {
+
+    border-color: #263c8f;
+
+    transform: translateY(-2px);
+}
+
+.product h3 {
+
+    margin-bottom: 8px;
+
+    font-size: 18px;
+}
+
+.company-name {
+
+    color: #263c8f;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.formula {
+
+    color: #666;
+
+    font-size: 13px;
+
+    margin: 8px 0;
+}
+
+.pack {
+
+    color: #555;
+
+    font-size: 13px;
+
+    margin-bottom: 12px;
+}
+
+.price {
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    margin-bottom: 13px;
+}
+
+.product button {
+
+    width: 100%;
+
+    padding: 11px;
+
+    border: none;
+
+    background: #263c8f;
+
+    color: white;
+
+    cursor: pointer;
+
+    border-radius: 3px;
+}
+
+.product button:hover {
+
+    background: #1d2f72;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    text-align: center;
+
+    color: #777;
+
+    grid-column: 1 / -1;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    margin-top: 40px;
+
+    background: #202636;
+
+    color: white;
+
+    padding: 30px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.5);
+
+    z-index: 200;
+}
+
+.modal-box {
+
+    background: white;
+
+    width: min(600px, 92%);
+
+    margin: 60px auto;
+
+    padding: 25px;
+
+    border-radius: 5px;
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+}
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.close {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* ORDER ITEMS */
+
+.order-item {
+
+    border-bottom: 1px solid #ddd;
+
+    padding: 12px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.order-item button {
+
+    border: none;
+
+    background: #d64545;
+
+    color: white;
+
+    padding: 5px 8px;
+
+    cursor: pointer;
+}
+
+
+/* ORDER FORM */
+
+.order-form {
+
+    margin-top: 20px;
+}
+
+.order-form input,
+.order-form textarea {
+
+    width: 100%;
+
+    padding: 11px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #ccc;
+}
+
+.order-form textarea {
+
+    height: 80px;
+
+    resize: vertical;
+}
+
+.send-order {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    background: #263c8f;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .header-inner {
+
+        flex-wrap: wrap;
+    }
+
+    .logo {
+
+        font-size: 22px;
+    }
+
+    .search {
+
+        order: 3;
+
+        flex-basis: 100%;
+    }
+
+    .hero h1 {
+
+        font-size: 29px;
+    }
+
+    .products {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .products {
+
+        grid-template-columns: 1fr;
+    }
+
+    .cart-btn {
+
+        padding: 10px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="logo">
+            City <span>Pharma</span>
+        </div>
+
+
+        <div class="search">
+
+            <input
+
+                id="searchInput"
+
+                type="text"
+
+                placeholder="Search medicine, company or formula..."
+
+                oninput="searchProducts()"
+
+            >
+
+        </div>
+
+
+        <button
+
+            class="cart-btn"
+
+            onclick="openCart()"
+
+        >
+
+            Order
+
+            (<span id="cartCount">0</span>)
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         ALL COMPANIES
+    ========================= -->
+
+    <nav>
+
+        <div class="nav-inner">
+
+            <button onclick="showAll()">
+                All Medicines
+            </button>
+
+            <button onclick="filterCompany('Abbott')">
+                Abbott
+            </button>
+
+            <button onclick="filterCompany('Getz')">
+                Getz
+            </button>
+
+            <button onclick="filterCompany('High-Q')">
+                High-Q
+            </button>
+
+            <button onclick="filterCompany('Hilton')">
+                Hilton
+            </button>
+
+            <button onclick="filterCompany('Pacific')">
+                Pacific
+            </button>
+
+            <button onclick="filterCompany('Highnoon')">
+                Highnoon
+            </button>
+
+            <button onclick="filterCompany('Saffron')">
+                Saffron
+            </button>
+
+            <button onclick="filterCompany('Continental')">
+                Continental
+            </button>
+
+            <button onclick="filterCompany('CCL')">
+                CCL
+            </button>
+
+            <button onclick="filterCompany('GSK')">
+                GSK
+            </button>
+
+            <button onclick="filterCompany('Sanofi')">
+                Sanofi
+            </button>
+
+            <button onclick="filterCompany('Novartis')">
+                Novartis
+            </button>
+
+            <button onclick="filterCompany('Sami')">
+                Sami
+            </button>
+
+            <button onclick="filterCompany('Ferozsons')">
+                Ferozsons
+            </button>
+
+            <button onclick="filterCompany('Tabros')">
+                Tabros
+            </button>
+
+            <button onclick="filterCompany('AGP')">
+                AGP
+            </button>
+
+            <button onclick="filterCompany('Barrett Hodgson')">
+                Barrett Hodgson
+            </button>
+
+            <button onclick="filterCompany('Searle')">
+                Searle
+            </button>
+
+            <button onclick="filterCompany('Atco')">
+                Atco
+            </button>
+
+            <button onclick="filterCompany('PharmEvo')">
+                PharmEvo
+            </button>
+
+            <button onclick="filterCompany('Scilife')">
+                Scilife
+            </button>
+
+            <button onclick="filterCompany('Genix')">
+                Genix
+            </button>
+
+            <button onclick="filterCompany('Genetics')">
+                Genetics
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <h1>
+            Wholesale Medicine Marketplace
+        </h1>
+
+        <p>
+            Search medicines, companies and formulas
+            and prepare your wholesale order.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button
+
+                class="primary"
+
+                onclick="showAll()"
+
+            >
+                Browse Medicines
+            </button>
+
+
+            <button
+
+                class="secondary"
+
+                onclick="openCart()"
+
+            >
+                View Order
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MEDICINES
+========================= -->
+
+<main class="container">
+
+    <h2 class="section-title">
+
+        Medicines
+
+    </h2>
+
+
+    <div
+
+        id="products"
+
+        class="products"
+
+    ></div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    City Pharma — Wholesale Medicine Website
+
+</footer>
+
+
+
+<!-- =========================
+     ORDER MODAL
+========================= -->
+
+<div
+
+    id="cartModal"
+
+    class="modal"
+
+>
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2>
+                Your Order
+            </h2>
+
+
+            <button
+
+                class="close"
+
+                onclick="closeCart()"
+
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="cartItems"></div>
+
+
+        <div class="order-form">
+
+            <input
+
+                id="customerName"
+
+                type="text"
+
+                placeholder="Your Name"
+
+            >
+
+
+            <input
+
+                id="customerPhone"
+
+                type="text"
+
+                placeholder="Phone Number"
+
+            >
+
+
+            <textarea
+
+                id="customerMessage"
+
+                placeholder="Additional message..."
+
+            ></textarea>
+
+
+            <button
+
+                class="send-order"
+
+                onclick="sendOrder()"
+
+            >
+
+                Send Order Inquiry
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   MEDICINE DATABASE
+========================= */
+
+const medicines = [
+
+    {
+        name: "Panadol",
+        company: "GSK",
+        formula: "Paracetamol 500mg",
+        pack: "20 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Augmentin",
+        company: "GSK",
+        formula: "Amoxicillin + Clavulanic Acid",
+        pack: "14 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Glucophage",
+        company: "Getz",
+        formula: "Metformin",
+        pack: "20 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Danzen",
+        company: "Highnoon",
+        formula: "Serratiopeptidase",
+        pack: "20 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Motilium",
+        company: "Hilton",
+        formula: "Domperidone",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Brufen",
+        company: "Abbott",
+        formula: "Ibuprofen",
+        pack: "20 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Arinac",
+        company: "Abbott",
+        formula: "Paracetamol + Pseudoephedrine",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Surbex-Z",
+        company: "Searle",
+        formula: "Multivitamins + Minerals",
+        pack: "30 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "High-Q",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Pacific",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Saffron",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Continental",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "CCL",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Sanofi",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Novartis",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Sami",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Ferozsons",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Tabros",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "AGP",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Barrett Hodgson",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Atco",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "PharmEvo",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Scilife",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Genix",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    },
+
+    {
+        name: "Sample Medicine",
+        company: "Genetics",
+        formula: "Demo Formula",
+        pack: "10 Tablets",
+        price: "Wholesale Price"
+    }
+
+];
+
+
+
+/* =========================
+   CART
+========================= */
+
+let cart = [];
+
+
+
+function updateCart() {
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = cart.length;
+
+}
+
+
+
+function addToCart(index) {
+
+    const medicine = medicines[index];
+
+    cart.push(medicine);
+
+    updateCart();
+
+    alert(
+        medicine.name +
+        " added to your order."
+    );
+
+}
+
+
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+    renderCart();
+
+}
+
+
+
+/* =========================
+   DISPLAY PRODUCTS
+========================= */
+
+function displayProducts(list) {
+
+    const container =
+        document.getElementById("products");
+
+    container.innerHTML = "";
+
+
+    if (list.length === 0) {
+
+        container.innerHTML = `
+            <div class="empty">
+                No medicines found for this company.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    list.forEach((medicine) => {
+
+        const originalIndex =
+            medicines.indexOf(medicine);
+
+
+        container.innerHTML += `
+
+            <div class="product">
+
+                <h3>
+                    ${medicine.name}
+                </h3>
+
+                <div class="company-name">
+                    ${medicine.company}
+                </div>
+
+                <div class="formula">
+                    ${medicine.formula}
+                </div>
+
+                <div class="pack">
+                    Pack: ${medicine.pack}
+                </div>
+
+                <div class="price">
+                    ${medicine.price}
+                </div>
+
+                <button
+                    onclick="addToCart(${originalIndex})"
+                >
+                    Add to Order
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchProducts() {
+
+    const query =
+
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const results =
+
+        medicines.filter(
+
+            medicine =>
+
+                medicine.name
+                .toLowerCase()
+                .includes(query)
+
+                ||
+
+                medicine.company
+                .toLowerCase()
+                .includes(query)
+
+                ||
+
+                medicine.formula
+                .toLowerCase()
+                .includes(query)
+
+        );
+
+
+    displayProducts(results);
+
+}
+
+
+
+/* =========================
+   COMPANY FILTER
+========================= */
+
+function filterCompany(company) {
+
+    const results =
+
+        medicines.filter(
+
+            medicine =>
+
+                medicine.company
+                .toLowerCase() ===
+                company.toLowerCase()
+
+        );
+
+
+    displayProducts(results);
+
+}
+
+
+
+/* =========================
+   SHOW ALL
+========================= */
+
+function showAll() {
+
+    document
+    .getElementById("searchInput")
+    .value = "";
+
+
+    displayProducts(medicines);
+
+}
+
+
+
+/* =========================
+   CART MODAL
+========================= */
+
+function openCart() {
+
+    document
+    .getElementById("cartModal")
+    .style.display = "block";
+
+
+    renderCart();
+
+}
+
+
+
+function closeCart() {
+
+    document
+    .getElementById("cartModal")
+    .style.display = "none";
+
+}
+
+
+
+function renderCart() {
+
+    const container =
+
+        document
+        .getElementById("cartItems");
+
+
+    container.innerHTML = "";
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+            <p>Your order is empty.</p>
+        `;
+
+        return;
+
+    }
+
+
+    cart.forEach(
+
+        (medicine, index) => {
+
+            container.innerHTML += `
+
+                <div class="order-item">
+
+                    <div>
+
+                        <strong>
+                            ${medicine.name}
+                        </strong>
+
+                        <br>
+
+                        ${medicine.company}
+
+                        <br>
+
+                        ${medicine.pack}
+
+                    </div>
+
+
+                    <button
+                        onclick="removeItem(${index})"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================
+   SEND ORDER
+========================= */
+
+function sendOrder() {
+
+    if (cart.length === 0) {
+
+        alert(
+            "Please add medicines to your order."
+        );
+
+        return;
+
+    }
+
+
+    const name =
+
+        document
+        .getElementById("customerName")
+        .value
+        .trim();
+
+
+    const phone =
+
+        document
+        .getElementById("customerPhone")
+        .value
+        .trim();
+
+
+    if (!name || !phone) {
+
+        alert(
+            "Please enter your name and phone number."
+        );
+
+        return;
+
+    }
+
+
+    let message =
+
+        "ORDER INQUIRY\n\n";
+
+
+    cart.forEach(
+
+        (medicine, index) => {
+
+            message +=
+
+                `${index + 1}. ` +
+                `${medicine.name} - ` +
+                `${medicine.company}\n`;
+
+        }
+
+    );
+
+
+    message +=
+
+        `\nName: ${name}`;
+
+
+    message +=
+
+        `\nPhone: ${phone}`;
+
+
+    const extra =
+
+        document
+        .getElementById("customerMessage")
+        .value;
+
+
+    message +=
+
+        `\nMessage: ${extra}`;
+
+
+    /*
+       APNA AUTHORIZED BUSINESS
+       WHATSAPP NUMBER YAHAN ADD KARNA HAI.
+
+       Example:
+       923001234567
+    */
+
+
+    const whatsapp =
+        "923001234567";
+
+
+    const encodedMessage =
+
+        encodeURIComponent(message);
+
+
+    window.open(
+
+        `https://wa.me/${whatsapp}?text=${encodedMessage}`,
+
+        "_blank"
+
+    );
+
+}
+
+
+
+/* =========================
+   START WEBSITE
+========================= */
+
+displayProducts(medicines);
+
+</script>
+
+</body>
+</html>
+```
